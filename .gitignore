@@ -11,5 +11,5 @@ __pycache__/
 .venv/
 venv/
 
-# Informe con hallazgos de un objetivo real: entregar al profe, NO publicar
-INFORME*.md
+# Informe de tajamar.es (organizacion real, no bug bounty): NO publicar
+INFORME.md
