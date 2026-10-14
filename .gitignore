@@ -1,0 +1,12 @@
+# Output de recon y logs (no subir datos de objetivos)
+recon_out/
+*.log
+user_agents.log
+*_recon.json
+cabeceras.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
