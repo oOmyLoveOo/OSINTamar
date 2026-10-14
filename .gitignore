@@ -1,5 +1,5 @@
 # Output de recon y logs (no subir datos de objetivos)
-recon_out/
+recon_*/
 *.log
 user_agents.log
 *_recon.json
@@ -12,4 +12,4 @@ __pycache__/
 venv/
 
 # Informe con hallazgos de un objetivo real: entregar al profe, NO publicar
-INFORME.md
+INFORME*.md
