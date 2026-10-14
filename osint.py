@@ -32,6 +32,14 @@ from shutil import which
 
 try:
     import requests
+    # Silenciamos el aviso de "InsecureRequestWarning" (usamos verify=False a
+    # proposito: muchos objetivos tienen TLS invalido y no queremos que el
+    # recon reviente por eso).
+    try:
+        import urllib3
+        urllib3.disable_warnings()
+    except Exception:  # noqa: BLE001
+        pass
 except ImportError:
     requests = None
 
@@ -253,7 +261,8 @@ def fingerprint_tech(dominio, resultados):
     resultados["tech_pistas"] = pistas
 
     if tiene("whatweb"):
-        ok, out = run_cmd(["whatweb", "-a", "3", f"https://{dominio}"], timeout=60)
+        # -a 1 (stealthy): mas rapido y evita el timeout que daba -a 3 (agresivo).
+        ok, out = run_cmd(["whatweb", "-a", "1", f"https://{dominio}"], timeout=90)
         if out:
             print(out)
         resultados["whatweb"] = out
@@ -394,12 +403,6 @@ def analizar_headers(url):
 
 
 def cmd_headers(args):
-    if requests:
-        try:
-            import urllib3
-            urllib3.disable_warnings()
-        except Exception:  # noqa: BLE001
-            pass
     informes = []
     for url in args.urls:
         if not url.startswith(("http://", "https://")):
