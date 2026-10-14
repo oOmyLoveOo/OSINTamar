@@ -10,3 +10,6 @@ __pycache__/
 *.pyc
 .venv/
 venv/
+
+# Informe con hallazgos de un objetivo real: entregar al profe, NO publicar
+INFORME.md

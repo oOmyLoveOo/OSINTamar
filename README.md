@@ -23,14 +23,14 @@ python3 osint.py -h                 # ayuda general
 python3 osint.py recon   -h         # ayuda de cada subcomando
 
 # 1) Recon de un dominio
-python3 osint.py recon   tajamar.es                  # solo pasivo
-python3 osint.py recon   tajamar.es --activo          # pasivo + activo (ruidoso)
-python3 osint.py recon   tajamar.es --activo --nmap   # + escaneo de puertos
-python3 osint.py recon   tajamar.es -o salida/        # directorio de salida
+python3 osint.py recon   example.com                  # solo pasivo
+python3 osint.py recon   example.com --activo          # pasivo + activo (ruidoso)
+python3 osint.py recon   example.com --activo --nmap   # + escaneo de puertos
+python3 osint.py recon   example.com -o salida/        # directorio de salida
 
 # 2) Auditoría de cabeceras de seguridad
-python3 osint.py headers https://tajamar.es
-python3 osint.py headers tajamar.es github.com -o cabeceras.json
+python3 osint.py headers https://example.com
+python3 osint.py headers example.com github.com -o cabeceras.json
 
 # 3) Servidor que captura y clasifica User-Agents
 python3 osint.py serve --puerto 8080

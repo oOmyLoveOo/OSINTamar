@@ -8,9 +8,9 @@ Reune en una sola CLI con subcomandos:
   serve    -> servidor HTTP que captura y clasifica User-Agents
 
 Ejemplos:
-  python3 osint.py recon   tajamar.es
-  python3 osint.py recon   tajamar.es --activo --nmap -o salida/
-  python3 osint.py headers https://tajamar.es otro.com -o cabeceras.json
+  python3 osint.py recon   example.com
+  python3 osint.py recon   example.com --activo --nmap -o salida/
+  python3 osint.py headers https://example.com otro.com -o cabeceras.json
   python3 osint.py serve   --puerto 8080
 
 USO ETICO: la fase 'activa' (y nmap/whatweb) genera trafico directo contra el
@@ -533,14 +533,14 @@ def main():
     sub = p.add_subparsers(dest="cmd", required=True)
 
     pr = sub.add_parser("recon", help="enumeracion pasiva y activa de un dominio")
-    pr.add_argument("dominio", help="dominio objetivo (p.ej. tajamar.es)")
+    pr.add_argument("dominio", help="dominio objetivo (p.ej. example.com)")
     pr.add_argument("--activo", action="store_true", help="fase activa (RUIDOSA, requiere permiso)")
     pr.add_argument("--nmap", action="store_true", help="incluye escaneo nmap en la fase activa")
     pr.add_argument("-o", "--outdir", default="recon_out", help="directorio de salida")
     pr.set_defaults(func=cmd_recon)
 
     ph = sub.add_parser("headers", help="auditoria de cabeceras de seguridad de una URL")
-    ph.add_argument("urls", nargs="+", help="URL(s), p.ej. https://tajamar.es")
+    ph.add_argument("urls", nargs="+", help="URL(s), p.ej. https://example.com")
     ph.add_argument("-o", "--out", help="guardar informe JSON en este fichero")
     ph.set_defaults(func=cmd_headers)
 
